@@ -1,11 +1,11 @@
-package uz.ikhtidev.vocabulary
+package uz.ikhtidev.vocabulary.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import uz.ikhtidev.vocabulary.databinding.ActivityAddBinding
 import uz.ikhtidev.vocabulary.db.VocabularyDatabase
-import uz.ikhtidev.vocabulary.db.model.Vocabulary
+import uz.ikhtidev.vocabulary.db.entity.Vocabulary
 
 class AddActivity : AppCompatActivity() {
 
@@ -22,7 +22,7 @@ class AddActivity : AppCompatActivity() {
         binding.btnSubmit.setOnClickListener {
             submitButtonClicked(
                 binding.etEng.text.toString().trim(),
-                binding.etEng.text.toString().trim(),
+                binding.etUz.text.toString().trim(),
                 binding.etSentence.text.toString().trim()
             )
         }

@@ -1,9 +1,12 @@
 package uz.ikhtidev.vocabulary.db.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import uz.ikhtidev.vocabulary.db.model.Vocabulary
+import androidx.room.Update
+import uz.ikhtidev.vocabulary.db.entity.Vocabulary
 
 @Dao
 interface VocabularyDao {
@@ -12,6 +15,14 @@ interface VocabularyDao {
     fun addVocabulary(vocabulary: Vocabulary)
 
     @Query("select * from vocabulary_table")
-    fun getAllVocabularies(): List<Vocabulary>
+    fun getAllVocabularies(): LiveData<List<Vocabulary>>
 
+    @Query("Select * from vocabulary_table where id = :id")
+    fun getVocabularyById(id: Int) : Vocabulary
+
+    @Update
+    fun updateVocabulary(vocabulary:Vocabulary)
+
+    @Delete
+    fun deleteVocabulary(vocabulary: Vocabulary)
 }

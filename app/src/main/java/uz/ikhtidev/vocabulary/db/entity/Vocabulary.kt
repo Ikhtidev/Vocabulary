@@ -1,4 +1,4 @@
-package uz.ikhtidev.vocabulary.db.model
+package uz.ikhtidev.vocabulary.db.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
