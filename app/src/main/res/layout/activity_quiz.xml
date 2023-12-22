@@ -5,15 +5,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
+    android:id="@+id/rootLinear"
     android:orientation="vertical"
     tools:context=".ui.QuizActivity">
 
     <TextView
-        android:id="@+id/tvEng"
+        android:id="@+id/tvCounter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="60dp"
+        android:text="1-test"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="28sp" />
+
+    <TextView
+        android:id="@+id/tvEng"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_margin="20dp"
+        android:paddingVertical="20dp"
         android:text="Text Eng"
+        android:gravity="center"
+        android:background="@drawable/bg_tv_eng"
         android:textColor="@color/black"
         android:textSize="20sp" />
 

@@ -47,4 +47,8 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    <string name="true_answer">To\'gri javob!</string>
+    <string name="wrong_answer">Xato, to\'g\'ri javob: %1$s</string>
+    <string name="vocabulary_deleted">Lug\'at o\'chirildi</string>
+    <string name="required_four_vocabularies">Kamida 4 ta lug\'at qo\'shing</string>
 </resources>

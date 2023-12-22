@@ -6,11 +6,11 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.google.android.material.snackbar.Snackbar
 import uz.ikhtidev.vocabulary.R
 import uz.ikhtidev.vocabulary.adapter.VocabularyAdapter
 import uz.ikhtidev.vocabulary.databinding.ActivityMainBinding
 import uz.ikhtidev.vocabulary.db.VocabularyDatabase
+import uz.ikhtidev.vocabulary.db.entity.Vocabulary
 import uz.ikhtidev.vocabulary.ui.fragments.EditDialog
 import uz.ikhtidev.vocabulary.ui.vm.MainViewModel
 
@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
     private val myDatabase: VocabularyDatabase by lazy {
         VocabularyDatabase.getInstance(this)
     }
+    private var vocabularyList:List<Vocabulary> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,15 +55,19 @@ class MainActivity : AppCompatActivity() {
                 startActivity(Intent(this@MainActivity, AddActivity::class.java))
             }
             btnStart.setOnClickListener {
-                Toast.makeText(
-                    this@MainActivity,
-                    "Qolganini keyingi darsda qilamiz",
-                    Toast.LENGTH_SHORT
-                ).show()
+                if (vocabularyList.size>3)
+                    startActivity(Intent(this@MainActivity, QuizActivity::class.java))
+                else
+                    Toast.makeText(
+                        this@MainActivity,
+                        getString(R.string.required_four_vocabularies),
+                        Toast.LENGTH_SHORT
+                    ).show()
             }
         }
 
         viewModel.getVocabularies().observe(this) { vocabularies ->
+            vocabularyList = vocabularies
             if (vocabularies.isEmpty()) {
                 binding.apply {
                     tvEmpty.visibility = View.VISIBLE

@@ -2,7 +2,6 @@ package uz.ikhtidev.vocabulary.adapter
 
 
 import android.annotation.SuppressLint
-import android.transition.AutoTransition
 import android.transition.TransitionManager
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +13,7 @@ import uz.ikhtidev.vocabulary.MyApp
 import uz.ikhtidev.vocabulary.R
 import uz.ikhtidev.vocabulary.databinding.LayoutVocabularyBinding
 import uz.ikhtidev.vocabulary.db.entity.Vocabulary
+
 class VocabularyAdapter(
     private val onItemEditClick: (Vocabulary) -> Unit,
     private val onItemDeleteClick: (Vocabulary) -> Unit,
@@ -55,9 +55,6 @@ class VocabularyAdapter(
                     TransitionManager.beginDelayedTransition(fullItem)
                 } else {
                     settingsLayout.visibility = View.GONE
-//                    val autoTransition = AutoTransition()
-//                    autoTransition.excludeChildren(someLayout, true)
-//                    TransitionManager.beginDelayedTransition(cardItem, autoTransition)
                     TransitionManager.beginDelayedTransition(someLayout)
                 }
             }
@@ -66,8 +63,8 @@ class VocabularyAdapter(
             }
             btnDelete.setOnClickListener {
 
-                // Snackbar chiqarish
-                val snackBar = Snackbar.make(it, "Element o'chirildi", Snackbar.LENGTH_LONG)
+                val snackBar = Snackbar.make(it,
+                    MyApp.getContext().getString(R.string.vocabulary_deleted), Snackbar.LENGTH_LONG)
                 snackBar.setAction("Undo") {
                     vocabularies.add(position, vocabulary)
                     notifyItemInserted(position)
@@ -83,10 +80,8 @@ class VocabularyAdapter(
                 })
                 snackBar.show()
 
-                // Elementni o'chirish uchun kerakli amallarni bajaring
                 vocabularies.removeAt(position)
                 notifyItemRemoved(position)
-
             }
         }
     }
