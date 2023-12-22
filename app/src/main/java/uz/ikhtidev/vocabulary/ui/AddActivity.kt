@@ -3,20 +3,22 @@ package uz.ikhtidev.vocabulary.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import uz.ikhtidev.vocabulary.R
 import uz.ikhtidev.vocabulary.databinding.ActivityAddBinding
 import uz.ikhtidev.vocabulary.db.VocabularyDatabase
 import uz.ikhtidev.vocabulary.db.entity.Vocabulary
 
 class AddActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityAddBinding
+    private val binding: ActivityAddBinding by lazy {
+        ActivityAddBinding.inflate(layoutInflater)
+    }
     private val myDatabase: VocabularyDatabase by lazy {
         VocabularyDatabase.getInstance(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityAddBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.btnSubmit.setOnClickListener {
@@ -37,10 +39,10 @@ class AddActivity : AppCompatActivity() {
                     sentence = textSentence
                 )
             )
-            Toast.makeText(this, "Lug'at qo'shildi!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.vocabulary_added), Toast.LENGTH_SHORT).show()
             finish()
         } else {
-            Toast.makeText(this, "Iltimos barcha maydonlarni to'ldiring!", Toast.LENGTH_SHORT)
+            Toast.makeText(this, getString(R.string.requirement_fill_blanks), Toast.LENGTH_SHORT)
                 .show()
         }
     }

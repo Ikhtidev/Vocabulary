@@ -33,7 +33,8 @@ class VocabularyAdapter(
         fun onBind(vocabulary: Vocabulary) {
             binding.tvEng.text = vocabulary.textEng
             binding.tvUz.text = vocabulary.textUz
-            binding.tvSentence.text = MyApp.getContext().getString(R.string.sentence, vocabulary.sentence)
+            binding.tvSentence.text =
+                MyApp.getContext().getString(R.string.sentence, vocabulary.sentence)
         }
     }
 
@@ -63,8 +64,10 @@ class VocabularyAdapter(
             }
             btnDelete.setOnClickListener {
 
-                val snackBar = Snackbar.make(it,
-                    MyApp.getContext().getString(R.string.vocabulary_deleted), Snackbar.LENGTH_LONG)
+                val snackBar = Snackbar.make(
+                    it,
+                    MyApp.getContext().getString(R.string.vocabulary_deleted), Snackbar.LENGTH_LONG
+                )
                 snackBar.setAction("Undo") {
                     vocabularies.add(position, vocabulary)
                     notifyItemInserted(position)

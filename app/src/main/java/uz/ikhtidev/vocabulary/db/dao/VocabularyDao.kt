@@ -14,10 +14,10 @@ interface VocabularyDao {
     @Insert
     fun addVocabulary(vocabulary: Vocabulary)
 
-    @Query("select * from vocabulary_table")
+    @Query("SELECT * FROM vocabulary_table")
     fun getAllVocabularies(): LiveData<List<Vocabulary>>
 
-    @Query("Select * from vocabulary_table where id = :id")
+    @Query("SELECT * FROM vocabulary_table WHERE id = :id")
     fun getVocabularyById(id: Int) : Vocabulary
 
     @Update

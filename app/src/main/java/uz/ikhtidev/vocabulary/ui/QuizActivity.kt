@@ -19,7 +19,6 @@ class QuizActivity : AppCompatActivity() {
     private val binding: ActivityQuizBinding by lazy {
         ActivityQuizBinding.inflate(layoutInflater)
     }
-
     private val viewModel: MainViewModel by lazy {
         ViewModelProvider(this)[MainViewModel::class.java]
     }
@@ -34,7 +33,6 @@ class QuizActivity : AppCompatActivity() {
             vocabularyList = it
             createQuiz()
         }
-
 
     }
 
@@ -69,7 +67,6 @@ class QuizActivity : AppCompatActivity() {
                     resultCheck(question.textUz, randomVocabularies[3].textUz)
                 }
             }
-
         }
     }
 

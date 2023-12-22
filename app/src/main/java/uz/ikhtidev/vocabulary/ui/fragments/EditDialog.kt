@@ -11,9 +11,8 @@ import uz.ikhtidev.vocabulary.databinding.DialogEditBinding
 import uz.ikhtidev.vocabulary.db.VocabularyDatabase
 import uz.ikhtidev.vocabulary.db.entity.Vocabulary
 
-class EditDialog: BottomSheetDialogFragment() {
+class EditDialog : BottomSheetDialogFragment() {
 
-    private lateinit var binding: DialogEditBinding
     private val myDatabase: VocabularyDatabase by lazy {
         VocabularyDatabase.getInstance(requireActivity())
     }
@@ -22,10 +21,10 @@ class EditDialog: BottomSheetDialogFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        binding = DialogEditBinding.inflate(layoutInflater, container, false)
+    ): View {
+        val binding: DialogEditBinding = DialogEditBinding.inflate(layoutInflater, container, false)
 
-        val id =  arguments?.getInt(getString(R.string.vocabulary_id))?: 1
+        val id = arguments?.getInt(getString(R.string.vocabulary_id)) ?: 1
         val oldVocabulary = myDatabase.vocabularyDao().getVocabularyById(id)
 
         binding.etEng.setText(oldVocabulary.textEng)
@@ -36,11 +35,16 @@ class EditDialog: BottomSheetDialogFragment() {
             dismiss()
         }
         binding.btnEdit.setOnClickListener {
-            val vocabulary = Vocabulary(oldVocabulary.id, binding.etEng.text.toString(),binding.etUz.text.toString(),binding.etSentence.text.toString())
+            val vocabulary = Vocabulary(
+                oldVocabulary.id,
+                binding.etEng.text.toString(),
+                binding.etUz.text.toString(),
+                binding.etSentence.text.toString()
+            )
             myDatabase.vocabularyDao().updateVocabulary(vocabulary)
             Toast.makeText(
                 requireActivity(),
-                "Vocabulary muvaffaqiyatli o'zgartirildi",
+                getString(R.string.successfully_changed),
                 Toast.LENGTH_SHORT
             ).show()
             this.dismiss()

@@ -12,10 +12,9 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginVertical="10dp"
-        android:hint="Enter english text"
+        android:hint="@string/enter_english_text"
         app:boxBackgroundMode="outline">
 
-        <!--this is the actual edit text which takes the input-->
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etEng"
             android:singleLine="true"
@@ -29,10 +28,9 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginVertical="10dp"
-        android:hint="Enter uzbek text"
+        android:hint="@string/enter_uzbek_text"
         app:boxBackgroundMode="outline">
 
-        <!--this is the actual edit text which takes the input-->
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etUz"
             android:singleLine="true"
@@ -46,10 +44,9 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginVertical="10dp"
-        android:hint="Enter sentence"
+        android:hint="@string/enter_sentence"
         app:boxBackgroundMode="outline">
 
-        <!--this is the actual edit text which takes the input-->
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etSentence"
             android:layout_width="match_parent"
@@ -65,6 +62,6 @@
         android:backgroundTint="@color/color_blue"
         android:layout_marginTop="20dp"
         android:paddingHorizontal="40dp"
-        android:text="Add to vocabularies" />
+        android:text="@string/add_to_vocabularies" />
 
 </LinearLayout>

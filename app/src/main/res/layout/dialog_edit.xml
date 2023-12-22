@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Lug'atni o'zgartirish"
+        android:text="@string/editing_vocabulary"
         android:textColor="@color/black"
         android:textStyle="bold"
         android:layout_marginVertical="10dp"
@@ -27,10 +27,9 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:layout_marginVertical="10dp"
-            android:hint="Enter english text"
+            android:hint="@string/enter_english_text"
             app:boxBackgroundMode="outline">
 
-            <!--this is the actual edit text which takes the input-->
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etEng"
                 android:singleLine="true"
@@ -44,10 +43,9 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:layout_marginVertical="10dp"
-            android:hint="Enter uzbek text"
+            android:hint="@string/enter_uzbek_text"
             app:boxBackgroundMode="outline">
 
-            <!--this is the actual edit text which takes the input-->
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etUz"
                 android:singleLine="true"
@@ -61,10 +59,9 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:layout_marginVertical="10dp"
-            android:hint="Enter some sentence"
+            android:hint="@string/enter_sentence"
             app:boxBackgroundMode="outline">
 
-            <!--this is the actual edit text which takes the input-->
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etSentence"
                 android:singleLine="true"
@@ -88,7 +85,7 @@
             app:cornerRadius="20dp"
             android:layout_marginHorizontal="5dp"
             android:backgroundTint="#D8D8D8"
-            android:text="Cancel"
+            android:text="@string/cancel"
             android:textColor="@color/black"
             android:textAllCaps="false" />
 
@@ -100,7 +97,7 @@
             app:cornerRadius="20dp"
             android:layout_marginHorizontal="5dp"
             android:backgroundTint="@color/color_red"
-            android:text="Edit"
+            android:text="@string/edit"
             android:textAllCaps="false"
             tools:ignore="TouchTargetSizeCheck" />
 

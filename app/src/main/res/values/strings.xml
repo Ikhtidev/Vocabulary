@@ -9,4 +9,14 @@
     <string name="vocabulary_deleted">Lug\'at o\'chirildi</string>
     <string name="required_four_vocabularies">Kamida 4 ta lug\'at qo\'shing</string>
     <string name="number_of_question">%1$s-savol</string>
+    <string name="vocabulary_added">Lug\'at qo\'shildi!</string>
+    <string name="requirement_fill_blanks">Iltimos barcha maydonlarni to\'ldiring!</string>
+    <string name="successfully_changed">Lug\'at muvaffaqiyatli o\'zgartirildi</string>
+    <string name="enter_english_text">Enter english text</string>
+    <string name="enter_uzbek_text">Enter uzbek text</string>
+    <string name="enter_sentence">Enter sentence</string>
+    <string name="add_to_vocabularies">Add to vocabularies</string>
+    <string name="editing_vocabulary">Lug\'atni o\'zgartirish</string>
+    <string name="cancel">Cancel</string>
+    <string name="edit">Edit</string>
 </resources>
