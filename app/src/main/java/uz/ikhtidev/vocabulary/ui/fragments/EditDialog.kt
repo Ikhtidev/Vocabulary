@@ -25,7 +25,7 @@ class EditDialog: BottomSheetDialogFragment() {
     ): View? {
         binding = DialogEditBinding.inflate(layoutInflater, container, false)
 
-        val id =  arguments?.getInt(getString(R.string.vocabularyid))?: 1
+        val id =  arguments?.getInt(getString(R.string.vocabulary_id))?: 1
         val oldVocabulary = myDatabase.vocabularyDao().getVocabularyById(id)
 
         binding.etEng.setText(oldVocabulary.textEng)

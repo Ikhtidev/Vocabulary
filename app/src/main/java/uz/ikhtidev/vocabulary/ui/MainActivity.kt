@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
                 val editDialog = EditDialog()
 
                 val bundle = Bundle()
-                bundle.putInt(getString(R.string.vocabularyid), vocabulary.id)
+                bundle.putInt(getString(R.string.vocabulary_id), vocabulary.id)
                 editDialog.arguments = bundle
 
                 editDialog.show(supportFragmentManager, getString(R.string.tag))

@@ -42,7 +42,7 @@ class QuizActivity : AppCompatActivity() {
         var randomVocabularies = vocabularyList.asSequence().shuffled().take(4).toList()
         val question = randomVocabularies[0]
         binding.apply {
-            tvCounter.text = (counter + 1).toString() + "-savol"
+            tvCounter.text = getString(R.string.number_of_question, (counter + 1).toString())
             tvEng.text = question.textEng
             randomVocabularies = randomVocabularies.shuffled()
             btnUz1.apply {
