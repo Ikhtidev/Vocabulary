@@ -32,13 +32,13 @@ class QuizActivity : AppCompatActivity() {
 
         viewModel.getVocabularies().observe(this) {
             vocabularyList = it
-            createQuiz(counter)
+            createQuiz()
         }
 
 
     }
 
-    private fun createQuiz(counter: Int) {
+    private fun createQuiz() {
         var randomVocabularies = vocabularyList.asSequence().shuffled().take(4).toList()
         val question = randomVocabularies[0]
         binding.apply {
@@ -84,7 +84,8 @@ class QuizActivity : AppCompatActivity() {
 
         GlobalScope.launch(Dispatchers.Main) {
             delay(1500)
-            createQuiz(counter++)
+            counter++
+            createQuiz()
             setClickableToButtons(true)
         }
     }
