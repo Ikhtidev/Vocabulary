@@ -1,6 +1,5 @@
 package uz.ikhtidev.vocabulary.adapter
 
-
 import android.annotation.SuppressLint
 import android.transition.TransitionManager
 import android.view.LayoutInflater
@@ -17,7 +16,8 @@ import uz.ikhtidev.vocabulary.db.entity.Vocabulary
 class VocabularyAdapter(
     private val onItemEditClick: (Vocabulary) -> Unit,
     private val onItemDeleteClick: (Vocabulary) -> Unit,
-    private val onItemDeleteDismiss: (Int) -> Unit
+    private val onItemDeleteDismiss: (Int) -> Unit,
+    private val onItemSoundClick: (Vocabulary) -> Unit
 ) : RecyclerView.Adapter<VocabularyAdapter.ViewHolder>() {
 
     private var vocabularies: ArrayList<Vocabulary> = ArrayList()
@@ -85,6 +85,9 @@ class VocabularyAdapter(
 
                 vocabularies.removeAt(position)
                 notifyItemRemoved(position)
+            }
+            btnSound.setOnClickListener {
+                onItemSoundClick(vocabulary)
             }
         }
     }

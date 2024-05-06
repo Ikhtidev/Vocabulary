@@ -2,10 +2,12 @@ package uz.ikhtidev.vocabulary.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.speech.tts.TextToSpeech
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import uz.ikhtidev.vocabulary.MyApp
 import uz.ikhtidev.vocabulary.R
 import uz.ikhtidev.vocabulary.adapter.VocabularyAdapter
 import uz.ikhtidev.vocabulary.databinding.ActivityMainBinding
@@ -13,8 +15,9 @@ import uz.ikhtidev.vocabulary.db.VocabularyDatabase
 import uz.ikhtidev.vocabulary.db.entity.Vocabulary
 import uz.ikhtidev.vocabulary.ui.fragments.EditDialog
 import uz.ikhtidev.vocabulary.ui.vm.MainViewModel
+import java.util.Locale
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     private val binding: ActivityMainBinding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
@@ -26,11 +29,13 @@ class MainActivity : AppCompatActivity() {
         VocabularyDatabase.getInstance(this)
     }
     private var vocabularyList:List<Vocabulary> = ArrayList()
+    private var tts: TextToSpeech? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+        tts = TextToSpeech(this, this)
         val adapter = VocabularyAdapter(
             onItemEditClick = { vocabulary ->
                 val editDialog = EditDialog()
@@ -46,6 +51,9 @@ class MainActivity : AppCompatActivity() {
             },
             onItemDeleteDismiss = { position ->
                 binding.rvVocabulary.scrollToPosition(position)
+            },
+            onItemSoundClick = { vocabulary ->
+                speakOut(vocabulary.sentence)
             }
         )
 
@@ -77,5 +85,37 @@ class MainActivity : AppCompatActivity() {
             }
             adapter.setData(vocabularies)
         }
+    }
+
+    private fun speakOut(sentence: String) {
+        tts!!.speak(sentence, TextToSpeech.QUEUE_FLUSH, null,"")
+    }
+
+
+    override fun onInit(status: Int) {
+        if (status == TextToSpeech.SUCCESS) {
+            val result = tts!!.setLanguage(Locale.US)
+
+            if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                Toast.makeText(
+                    MyApp.getContext(),
+                    "The Language not supported!",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else {
+//                btnSpeak!!.isEnabled = true
+            }
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        // Shutdown TTS when
+        // activity is destroyed
+        if (tts != null) {
+            tts!!.stop()
+            tts!!.shutdown()
+        }
+        super.onDestroy()
     }
 }
